@@ -1,0 +1,108 @@
+	  				Spoken Tutorials - Linux Assignment 
+				Funded by the National Mission on Education through ICT
+					Indian Institute of Technology Bombay,
+					    http://spoken-tutorial.org
+------------------------------------------------------------------------------------------------------------------------------------------------
+						Module - 1
+
+General Purpose Utilities in Linux
+
+
+1)Display the calender for the month of March 2012
+Ans: cal 3 2012
+
+2)List all the files and directories of the directory /usr/lib on the terminal. Now put the same information in a file named results. 
+  Display the contents of the file results now.
+
+Ans:
+ls /usr/lib
+ls /usr/lib > results
+cat results
+
+
+File Systems
+1)Make a directory structure like this in your home directory
+Ans:
+ mkdir demodir
+ cd demodir
+ mkdir inside_demo
+ mkdir also_inside_demo
+ cd also_inside_demo
+ mkdir abc
+ mkdir abc_123
+
+2) Remove the also_inside_demo directory
+Ans:
+rm -r also_inside_demo
+
+
+
+File Attributes
+
+1. Create a file abc.txt and change the ownership of this file to some other user on your machine,
+   and also change the group to family.
+Ans:
+ touch abc.txt
+ sudo chown vishnu abc.txt
+ sudo chgrp family abc.txt
+
+2. Create a file exercise.txt and make it  executable.
+Ans:
+ touch exercise.txt
+ chmod +x exercise.txt
+
+3. Create a file test.txt on your desktop and identify its inode number, also create a softlink
+   for test.txt in your home.
+Ans:
+touch ~/Desktop/test.txt
+ls -i ~/Desktop/test.txt
+ln -s ~/Desktop/test.txt ~/test.txt
+
+
+
+Redirection of Pipes
+
+
+1. Create a file name error_log in your current directory. Suppose you do not have any file named aa11 in your current directory. 
+   How  can you redirect the error message to the file error_log when we apply the command "wc -l aa11" ?  
+   How can you ensure that all the error log are appended to the error_log file?
+Ans:
+touch error_log
+wc -l aa11 2>> error_log
+
+2. Create  files named test1, test2, testa, testb
+   How can you count the number of  files starting with test and then having only one digit in their name using only a single line command ?
+Ans:
+touch test1
+touch test2
+touch testa
+touch testb
+ls -l test[0-9] | grep -c "^-"
+
+
+Linux process
+
+1. Open a terminal. Now spawn three shell processes one after another i.e. first spawn one shell, then from the spawned shell, spawn one new shell and so on. Now, 
+   how can you see the PID of the current shell ? How can you see the PID of the shell which is the grandparent of the current shell?
+
+Ans:
+bash
+bash
+bash
+
+echo $$
+
+ps -o ppid= $$
+
+
+2. How can you see all the processes (both system & user processes) in your computer?
+   The output can be quite large.  How can you view the output as multipage output ? 
+   How can you store the output in a file named process_info?
+
+Ans:
+ps -e
+ps -e | less
+ps -e > process_info
+
+
+
