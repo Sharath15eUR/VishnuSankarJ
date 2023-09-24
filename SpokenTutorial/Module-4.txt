@@ -1,0 +1,240 @@
+					Spoken Tutorials - Bash Assignment 
+				Funded by the National Mission on Education through ICT
+				       Indian Institute of Technology Bombay,
+					       http://spoken-tutorial.org
+-------------------------------------------------------------------------------------------------------------------
+Logical Operators
+
+1) Check whether the file exists and is executable using logical operators.
+   Hint:man test
+Ans:
+echo "Enter a file path:"
+read file_path
+
+if [ -x "$file_path" ]; then
+    echo "The file '$file_path' exists"
+else
+    echo "The file '$file_path' does not exist"
+fi
+
+
+Arithmetic Comparison
+
+1) Write a program to demonstrate the use of not equal to operator.
+   Hint: -ne
+Ans:
+echo "Enter a number:"
+read num1
+
+echo "Enter a number:"
+read num2
+
+if [ "$num1" -ne "$num2" ]; then
+    echo "Not equal"
+else
+    echo "Equal"
+fi
+
+String and File attributes
+
+1) Explore some more attributes
+Ans:
+   -r = checks readability
+if [ -r "demo.txt" ]; then
+    echo "Readable."
+else
+    echo "Not readable."
+fi
+   -x = checks executability
+if [ -x "script.sh" ]; then
+    echo "Executable."
+else
+    echo "Not executable."
+fi
+   -o = file used by current user or not
+if [ -o "demo2.txt" ]; then
+    echo "File used by current user."
+else
+    echo "File not used by current user."
+fi
+
+Conditional Loops
+
+1) Find the sum of first n prime numbers.
+Ans:
+is_prime() {
+    local num=$1
+    if [ $num -lt 2 ]; then
+        return 1
+    fi
+    for ((i=2; i*i<=num; i++)); do
+        if [ $((num % i)) -eq 0 ]; then
+            return 1
+        fi
+    done
+    return 0
+}
+
+echo "Enter a value:"
+read n
+
+sum=0
+count=0
+num=2
+
+while [ $count -lt $n ]; do
+    if is_prime $num; then
+        sum=$((sum + num))
+        count=$((count + 1))
+    fi
+    num=$((num + 1))
+done
+
+echo "The sum of the first $n prime numbers is: $sum"
+
+
+More on Loops
+
+1) Retype nested-for.sh bash script using nested while loop
+2) Save your program with the name: nested-while.sh
+
+while read -r dir; do
+    echo "Files in $dir directory:"
+    echo ""
+
+    ls -1 | while read -r file; do
+        echo "$file"
+    done
+
+    echo "------------------------"
+done
+
+
+Case statement
+
+1) Write a menu driven program for mathematical calculation
+   a. It should take user inputs a and b
+   b. It should ask for mathematical operator (+, -, / and *).
+   c. Do the calculation
+   d. Print the output
+
+Ans:
+addition() {
+    result=$(echo "$a + $b" | bc)
+}
+
+subtraction() {
+    result=$(echo "$a - $b" | bc)
+}
+
+multiplication() {
+    result=$(echo "$a * $b" | bc)
+}
+
+division() {
+    result=$(echo "scale=2; $a / $b" | bc)
+}
+
+echo "Menu:"
+echo "1. Addition"
+echo "2. Subtraction"
+echo "3. Multiplication"
+echo "4. Division"
+
+read choice
+echo "Enter value of a:"
+read a
+
+echo "Enter value of b:"
+read b
+
+case $choice in
+    1) addition ;;
+    2) subtraction ;;
+    3) multiplication ;;
+    4) division ;;
+    *) echo "Invalid choice. ;;
+echo "Result: $result"
+
+Using File Descriptors
+
+1) Try to append few lines to a file test.txt using file descriptor.
+2) Display the content of the file using file descriptor.
+
+exec 3>>nn.txt
+
+echo "This is line 1" >&3
+echo "This is line 2" >&3
+echo "This is line 3" >&3
+
+exec 3>&-
+
+exec 4<nn.txt
+
+while read -r line <&4; do
+    echo "$line"
+done
+
+exec 4<&-
+
+Basics of functions
+
+1) Write a program with two functions: 
+   a. The first function should display diskspace usage in human readable form.
+      (Hint: df -h)
+   b. The second function should display filesystem usage in human readable form.
+      (Hint: du -h)
+
+Ans:
+display_diskspace() {
+    echo "Diskspace Usage:"
+    df -h
+}
+
+display_filesystem_usage() {
+    echo "Filesystem Usage:"
+    du -h
+}
+display_diskspace
+
+display_filesystem_usage
+
+More on functions
+
+1) Write a program, 
+   a. where the function accepts two arguments.
+   b. The function should multiply the two arguments.
+   c. Make 3 function calls with arguments - (1, 2), (2, 3) and (3, 4)
+
+Ans:
+multiply() {
+    local product=$(( $1 * $2 ))
+    echo "Product of $1 * $2 is $product"
+}
+
+multiply 1 2
+multiply 2 3
+multiply 3 4
+
+Arrays and functions
+
+1) Write a program,
+    a. Where a function adds all the elements in an array. 
+    b. The function should display the sum of elements.
+    c. Make 2 function calls with array elements- (1, 2, 3) and (4, 5, 6).
+
+Ans:
+calculate_sum() {
+    local sum=0
+    for element in "${@}"; do
+        ((sum += element))
+    done
+    echo "The sum of elements is: $sum"
+}
+calculate_sum 1 2 3
+calculate_sum 4 5 6
+
+
+
+
+
