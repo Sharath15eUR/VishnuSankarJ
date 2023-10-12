@@ -1,0 +1,16 @@
+More on Loops
+
+1) Retype nested-for.sh bash script using nested while loop
+2) Save your program with the name: nested-while.sh
+
+while read -r dir; do
+    echo "Files in $dir directory:"
+    echo ""
+
+    ls -1 | while read -r file; do
+        echo "$file"
+    done
+
+    echo "------------------------"
+done
+
