@@ -1,7 +1,0 @@
-The grep command:
-1) Explore some other commands like -E, + and ?
-
--c : count lines that matches pattern
--i : ignores matching
--l : display filenames
--w: match whole word
