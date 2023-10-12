@@ -1,0 +1,31 @@
+More on Arrays
+
+1) Declare an Array names2 of length 7 and perform following operations-
+   a. Extract three elements starting from index two. 
+   b. Replace third element with 'Debian' and display.
+   c. Append any new name at the end of Array.
+Ans:
+names2=("vishnu" "sankar" "vs" "jvs" "vish" "sank" "shankar")
+extracted_elements=("${names2[@]:2:3}")
+
+names2[2]="Debian"
+
+names2+=("embedur")
+
+echo "a. Elements starting from index two:"
+for element in "${extracted_elements[@]}"
+do
+    echo "$element"
+done
+
+echo "b. Updated Array:"
+for name in "${names2[@]}"
+do
+    echo "$name"
+done
+
+echo "c. Array after adding:"
+for name in "${names2[@]}"
+do
+    echo "$name"
+done

@@ -1,0 +1,16 @@
+More on functions
+
+1) Write a program, 
+   a. where the function accepts two arguments.
+   b. The function should multiply the two arguments.
+   c. Make 3 function calls with arguments - (1, 2), (2, 3) and (3, 4)
+
+Ans:
+multiply() {
+    local product=$(( $1 * $2 ))
+    echo "Product of $1 * $2 is $product"
+}
+
+multiply 1 2
+multiply 2 3
+multiply 3 4

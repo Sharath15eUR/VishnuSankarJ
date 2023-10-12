@@ -1,0 +1,61 @@
+Simple Filters's Assignment
+Head:
+1)Try to get the first 10 lines from /etc/passwd
+Ans:
+head -n 10 /etc/passwd
+
+2)Try to get the first 3 lines from /etc/passwd
+Ans:
+head -n 3 /etc/passwd
+
+Tail:
+1. Try to get the Last 10 lines from /etc/passwd
+Ans:
+tail -n 10 /etc/passwd
+
+2. Try to get just the Last 3 lines from /etc/passwd
+Ans:
+tail -n 3 /etc/passwd
+
+3. Try to follow the log file /var/log/auth.log
+Ans:
+sudo tail -f /var/log/auth.log
+
+Sort:
+1. Try to sort the file /etc/passwd in assending order.
+Ans:
+sudo sort -t: -k1,1 /etc/passwd
+
+2. Try to sort the file /etc/passwd in decending order.
+Ans:
+sudo sort -t: -k1,1 -r /etc/passwd
+
+3. Try to sort the file /etc/passwd in assending order based on the 3rd
+column.
+Ans:
+sudo sort -t: -k3,3n /etc/passwd
+
+4. Try to sort the file /etc/passwd in assending order based on the 3rd
+column and ask sort to look at the thrid column as a whole number.
+Ans:
+sudo sort -t: -k3,3n /etc/passwd
+
+
+Cut:
+1. Try to cut just the usernames from the file /etc/passwd
+Ans:
+sudo cut -d: -f1 /etc/passwd
+
+Paste:
+1. Create a file alphabets.txt and key in all the 26 alphabets each one in a new line.
+Ans:
+echo -e "A\nB\nC\nD\nE\nF\nG\nH\nI\nJ\nK\nL\nM\nN\nO\nP\nQ\nR\nS\nT\nU\nV\nW\nX\nY\nZ" > alphabets.txt
+
+
+2. Create a file number.txt and key in 1 to 26 each one in a new line.
+Ans:
+echo -e "1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n11\n12\n13\n14\n15\n16\n17\n18\n19\n20\n21\n22\n23\n24\n25\n26" > number.txt
+
+3. Try to paste those two files, to see which letter appears at what number. Paste alphabets.txt numbers.txt
+Ans:
+paste alphabets.txt number.txt

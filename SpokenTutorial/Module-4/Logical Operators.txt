@@ -1,0 +1,14 @@
+Logical Operators
+
+1) Check whether the file exists and is executable using logical operators.
+   Hint:man test
+Ans:
+echo "Enter a file path:"
+read file_path
+
+if [ -x "$file_path" ]; then
+    echo "The file '$file_path' exists"
+else
+    echo "The file '$file_path' does not exist"
+fi
+

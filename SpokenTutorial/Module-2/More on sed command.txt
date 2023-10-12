@@ -1,0 +1,4 @@
+More on sed command:
+1) Use the same text file seddemo.txt 
+2) Try to replace or substitute name Ankit with Ashish
+sed -i 's/Ankit/Ashish/g' seddemo.txt
