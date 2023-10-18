@@ -15,4 +15,4 @@ touch test1
 touch test2
 touch testa
 touch testb
-ls -l test[0-9] | grep -c "^-"
+ls -l test[0-9] | grep -c "^"
